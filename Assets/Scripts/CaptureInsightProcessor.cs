@@ -1,19 +1,21 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using OpenAI;
 using OpenAI.Files;
 using OpenAI.Responses;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class TestScript : MonoBehaviour
+public class CaptureInsightProcessor : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    async void Start()
+    [Button(30)]
+    public async Task<string> FetchCaptureMusicInsights()
     {
-        Debug.Log(new OpenAIAuthentication().LoadFromDirectory(Application.dataPath + "/.openai").Info.ApiKey);
+        Debug.Log(new OpenAIAuthentication().LoadFromDirectory(Application.streamingAssetsPath + "/.openai").Info.ApiKey);
         var api = new OpenAIClient(new OpenAIAuthentication().LoadFromDirectory(Application.dataPath + "/.openai"));
         var file = await api.FilesEndpoint.UploadFileAsync(
-            Application.dataPath + "/living-room-sample.png",
+            Application.persistentDataPath + "/capture.png",
             FilePurpose.Vision
         );
 
@@ -35,7 +37,6 @@ public class TestScript : MonoBehaviour
         );
 
         var response = await api.ResponsesEndpoint.CreateModelResponseAsync(request);
-        
         var responseItem = response.Output.LastOrDefault();
 
         if (responseItem != null)
@@ -43,11 +44,7 @@ public class TestScript : MonoBehaviour
             Debug.Log(responseItem.ToString());
             response.PrintUsage();
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return response;
     }
 }

@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 38247255}
   - component: {fileID: 38247254}
   m_Layer: 0
-  m_Name: Visual Effect
+  m_Name: QUARK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

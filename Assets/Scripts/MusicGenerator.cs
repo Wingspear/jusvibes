@@ -43,29 +43,8 @@ public class MusicGenerator : MonoBehaviour
     /// </summary>
     public async Task GenerateMusic(string userPrompt)
     {
-        // 1. Load API key from config (.suno in StreamingAssets for now)
-        string path = Path.Combine(Application.streamingAssetsPath, ".suno");
-
-        if (!File.Exists(path))
-        {
-            Debug.LogError("Config file not found: " + path);
-            return;
-        }
-
-        try
-        {
-            string json = File.ReadAllText(path);
-            SunoConfig config = JsonUtility.FromJson<SunoConfig>(json);
-            apiKey = config.apiKey;
-            Debug.Log("Setting api key to " + apiKey);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Failed to read Suno config: " + e);
-            return;
-        }
-
-        // 2. Generate + poll + play
+        apiKey = Config.Instance.UserConfig.sunoApiKey;
+        Debug.Log("Setting api key to " + apiKey);
         await GenerateAndPlayAsync(userPrompt);
     }
 

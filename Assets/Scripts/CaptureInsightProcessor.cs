@@ -12,8 +12,7 @@ public class CaptureInsightProcessor : MonoBehaviour
     [Button(30)]
     public async Task<string> FetchCaptureMusicInsights()
     {
-        Debug.Log(new OpenAIAuthentication().LoadFromDirectory(Application.streamingAssetsPath + "/.openai").Info.ApiKey);
-        var api = new OpenAIClient(new OpenAIAuthentication().LoadFromDirectory(Application.streamingAssetsPath + "/.openai"));
+        var api = new OpenAIClient(new OpenAIAuthentication(Config.Instance.UserConfig.openaiApiKey));
         var file = await api.FilesEndpoint.UploadFileAsync(
             Application.persistentDataPath + "/capture.png",
             FilePurpose.Vision

@@ -9,7 +9,7 @@ using UnityEngine;
 [Serializable]
 public class UserConfig : ScriptableObject
 {
-    [Header("API Keys")]
+    [Header("API Keys, DONT PUSH")]
     public string openaiApiKey = "";
     public string sunoApiKey = "";
 }

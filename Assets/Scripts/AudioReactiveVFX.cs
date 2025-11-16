@@ -103,7 +103,7 @@ public class AudioReactiveVFX : MonoBehaviour
     private const string PARAM_ACCENT_COLOR = "AccentColor";
     private const string PARAM_ENERGY = "Energy";
     private const string PARAM_TURBULENCE = "TurbulenceIntensity";
-    private const string PARAM_RADIUS = "ParticleBoundary_radius";
+    private const string PARAM_RADIUS = "ParticleBoundary 1_radius";
     private const string PARAM_INNER_RADIUS = "ParticleInternal_radius";
 
     public enum ColorGradientMode
@@ -161,8 +161,29 @@ public class AudioReactiveVFX : MonoBehaviour
 
     private void Update()
     {
-        if (audioSource == null || !audioSource.isPlaying || audioSource.clip == null)
+        // More robust audio playing check
+        if (audioSource == null)
         {
+            // Try to find audio source again
+            if (musicGenerator != null)
+            {
+                audioSource = musicGenerator.GetComponent<AudioSource>();
+            }
+            
+            if (audioSource == null)
+            {
+                ApplyFallbackValues();
+                return;
+            }
+        }
+        
+        // Check if audio is actually playing with a clip loaded
+        if (!audioSource.isPlaying || audioSource.clip == null || audioSource.time <= 0)
+        {
+            if (enableDebugLogs && Time.frameCount % 120 == 0)
+            {
+                Debug.Log($"[AudioReactiveVFX] Waiting for audio: isPlaying={audioSource.isPlaying}, hasClip={audioSource.clip != null}, time={audioSource.time:F2}s");
+            }
             ApplyFallbackValues();
             return;
         }
@@ -182,6 +203,14 @@ public class AudioReactiveVFX : MonoBehaviour
     {
         // Get spectrum data
         audioSource.GetSpectrumData(spectrumData, 0, FFTWindow.BlackmanHarris);
+
+        // Debug: Check if we're actually getting spectrum data
+        if (enableDebugLogs && Time.frameCount % 60 == 0)
+        {
+            float testSum = 0f;
+            for (int i = 0; i < 20; i++) testSum += spectrumData[i];
+            Debug.Log($"[FFT] First 20 bins sum: {testSum:F6} | AudioSource.time: {audioSource.time:F2}s | Volume: {audioSource.volume}");
+        }
 
         // Calculate total volume across all frequencies
         totalVolume = 0f;

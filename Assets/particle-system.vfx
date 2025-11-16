@@ -971,7 +971,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614564}
   m_ExposedName: Energy
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 8
   m_Category: 
   m_Min:
     m_Type:
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614566}
   m_ExposedName: AudioBass
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614568}
   m_ExposedName: AudioMid
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 3
   m_Category: 
   m_Min:
     m_Type:
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614570}
   m_ExposedName: AudioTreble
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 4
   m_Category: 
   m_Min:
     m_Type:
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614572}
   m_ExposedName: GuideStrength
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 5
   m_Category: 
   m_Min:
     m_Type:
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614574}
   m_ExposedName: TurbulenceIntensity
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 6
   m_Category: 
   m_Min:
     m_Type:
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614576}
   m_ExposedName: CurlIntensity
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 7
   m_Category: 
   m_Min:
     m_Type:
@@ -1523,7 +1523,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614578}
   m_ExposedName: ThinkingAmount
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 9
   m_Category: 
   m_Min:
     m_Type:
@@ -1601,7 +1601,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614580}
   m_ExposedName: AnchorWorldPos
   m_Exposed: 1
-  m_Order: 11
+  m_Order: 12
   m_Category: 
   m_Min:
     m_Type:
@@ -1818,7 +1818,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614586}
   m_ExposedName: UserWorldPos
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 10
   m_Category: 
   m_Min:
     m_Type:
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614592}
   m_ExposedName: ObjectWorldPos
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 11
   m_Category: 
   m_Min:
     m_Type:
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614598}
   m_ExposedName: PrimaryColor
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 15
   m_Category: 
   m_Min:
     m_Type:
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614604}
   m_ExposedName: SecondaryColor
   m_Exposed: 1
-  m_Order: 16
+  m_Order: 17
   m_Category: 
   m_Min:
     m_Type:
@@ -2669,7 +2669,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614610}
   m_ExposedName: AccentColor
   m_Exposed: 1
-  m_Order: 15
+  m_Order: 16
   m_Category: 
   m_Min:
     m_Type:
@@ -2883,7 +2883,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614616}
   m_ExposedName: SpatialBlend
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 13
   m_Category: 
   m_Min:
     m_Type:
@@ -3487,7 +3487,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614691}
   m_ExposedName: VibeBlend
   m_Exposed: 1
-  m_Order: 13
+  m_Order: 14
   m_Category: 
   m_Min:
     m_Type:
@@ -7579,7 +7579,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615004}
   m_ExposedName: ParticleInternal
   m_Exposed: 1
-  m_Order: 17
+  m_Order: 18
   m_Category: 
   m_Min:
     m_Type:
@@ -11128,7 +11128,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615302}
   m_ExposedName: ParticleBoundary 1
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 1
   m_Category: 
   m_Min:
     m_Type:

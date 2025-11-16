@@ -60,6 +60,7 @@ public class AudioReactiveVFX : MonoBehaviour
     [SerializeField] private float fallbackEnergy = 100f;
     [SerializeField] private float fallbackTurbulence = 1f;
     [SerializeField] private float fallbackRadius = 0.4f;
+    [SerializeField] private float fallbackInnerRadius = 1.6f;
     [Tooltip("Output ranges for normalized values")]
     [SerializeField] private Vector2 bassRange = new Vector2(0f, 1f);
     [SerializeField] private Vector2 midRange = new Vector2(0f, 1f);
@@ -67,6 +68,7 @@ public class AudioReactiveVFX : MonoBehaviour
     [SerializeField] private Vector2 energyRange = new Vector2(50f, 400f);
     [SerializeField] private Vector2 turbulenceRange = new Vector2(0.5f, 5f);
     [SerializeField] private Vector2 radiusRange = new Vector2(0.2f, 1.5f);
+    [SerializeField] private Vector2 innerRadiusRange = new Vector2(0.8f, 1.8f);
 
     [Header("Debug")]
     [SerializeField] private bool enableDebugLogs = false;
@@ -89,6 +91,7 @@ public class AudioReactiveVFX : MonoBehaviour
     private float lastVolumeSpikeTime;
     private float radiusPulseTimer;
     private float baseRadius;
+    private float baseInnerRadius;
     private AdaptiveOrbRadius adaptiveRadius;
 
     // VFX Parameter names
@@ -101,6 +104,7 @@ public class AudioReactiveVFX : MonoBehaviour
     private const string PARAM_ENERGY = "Energy";
     private const string PARAM_TURBULENCE = "TurbulenceIntensity";
     private const string PARAM_RADIUS = "ParticleBoundary_radius";
+    private const string PARAM_INNER_RADIUS = "ParticleInternal_radius";
 
     public enum ColorGradientMode
     {
@@ -147,8 +151,9 @@ public class AudioReactiveVFX : MonoBehaviour
         currentSecondary = Color.red;
         currentAccent = Color.white;
 
-        // Initialize base radius
+        // Initialize base radii
         baseRadius = fallbackRadius;
+        baseInnerRadius = fallbackInnerRadius;
         
         // Apply fallback values initially
         ApplyFallbackValues();
@@ -221,6 +226,12 @@ public class AudioReactiveVFX : MonoBehaviour
         smoothBass = Mathf.Clamp01(smoothBass);
         smoothMid = Mathf.Clamp01(smoothMid);
         smoothTreble = Mathf.Clamp01(smoothTreble);
+        
+        // Debug logging
+        if (enableDebugLogs && Time.frameCount % 30 == 0) // Log every 30 frames
+        {
+            Debug.Log($"[Audio] Bass: {smoothBass:F3} | Mid: {smoothMid:F3} | Treble: {smoothTreble:F3}");
+        }
     }
 
     /// <summary>
@@ -311,6 +322,7 @@ public class AudioReactiveVFX : MonoBehaviour
         if (!modulateRadius || !enableVolumePulse)
         {
             baseRadius = fallbackRadius;
+            baseInnerRadius = fallbackInnerRadius;
             return;
         }
 
@@ -329,6 +341,9 @@ public class AudioReactiveVFX : MonoBehaviour
         {
             baseRadius = fallbackRadius;
         }
+        
+        // Inner radius is always based on fallback (not spatially adaptive)
+        baseInnerRadius = fallbackInnerRadius;
     }
 
     /// <summary>
@@ -448,7 +463,7 @@ public class AudioReactiveVFX : MonoBehaviour
             }
             
             // Add frequency-based modulation
-            energyValue += (smoothBass + smoothMid * 0.5f) * energyMultiplier * 100f;
+            energyValue += (smoothBass * 0.8f + smoothMid * 0.3f) * energyMultiplier * 50f;
             
             // Clamp to energy range
             energyValue = Mathf.Clamp(energyValue, energyRange.x, energyRange.y);
@@ -465,24 +480,26 @@ public class AudioReactiveVFX : MonoBehaviour
             vfx.SetFloat(PARAM_TURBULENCE, turbulence);
         }
 
-        // Modulate radius with smooth pulse
+        // Modulate outer radius directly with bass frequency (smooth continuous response)
         if (modulateRadius)
         {
-            float targetRadius = baseRadius;
+            // Map smoothBass (0-1) directly to radius range for immediate visual feedback
+            float targetOuterRadius = Mathf.Lerp(radiusRange.x, radiusRange.y, smoothBass);
             
-            // Add smooth pulse on volume spikes
-            if (radiusPulseTimer > 0f)
+            // Keep inner radius static for now
+            float targetInnerRadius = baseInnerRadius;
+            
+            // Clamp to safe ranges
+            targetOuterRadius = Mathf.Clamp(targetOuterRadius, radiusRange.x, radiusRange.y);
+            targetInnerRadius = Mathf.Clamp(targetInnerRadius, innerRadiusRange.x, innerRadiusRange.y);
+            
+            if (enableDebugLogs && Time.frameCount % 30 == 0)
             {
-                float normalizedTime = 1f - (radiusPulseTimer / radiusPulseDuration);
-                float curveValue = radiusPulseCurve.Evaluate(normalizedTime);
-                float pulseAmount = curveValue * radiusPulseAmount;
-                targetRadius += pulseAmount;
+                Debug.Log($"[Radius] Bass: {smoothBass:F3} -> Outer: {targetOuterRadius:F2}m (Range: {radiusRange.x}-{radiusRange.y})");
             }
             
-            // Clamp to radius range
-            targetRadius = Mathf.Clamp(targetRadius, radiusRange.x, radiusRange.y);
-            
-            vfx.SetFloat(PARAM_RADIUS, targetRadius);
+            vfx.SetFloat(PARAM_RADIUS, targetOuterRadius);
+            vfx.SetFloat(PARAM_INNER_RADIUS, targetInnerRadius);
         }
     }
     
@@ -513,6 +530,7 @@ public class AudioReactiveVFX : MonoBehaviour
         if (modulateRadius)
         {
             vfx.SetFloat(PARAM_RADIUS, fallbackRadius);
+            vfx.SetFloat(PARAM_INNER_RADIUS, fallbackInnerRadius);
         }
     }
 

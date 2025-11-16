@@ -25,7 +25,9 @@ public class AudioReactiveVFX : MonoBehaviour
     [SerializeField] private float beatThreshold = 1.3f;
     [SerializeField] private float beatCooldown = 0.2f;
     [SerializeField] private float beatEnergyPulse = 200f;
-    [SerializeField] private float beatPulseDuration = 0.1f;
+    [SerializeField] private float beatPulseDuration = 0.25f;
+    [SerializeField] private float beatRadiusAmount = 0.3f;
+    [SerializeField] private AnimationCurve beatRadiusCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     [Header("Volume Spike Detection")]
     [SerializeField] private bool enableVolumePulse = true;
@@ -69,6 +71,8 @@ public class AudioReactiveVFX : MonoBehaviour
     [SerializeField] private Vector2 turbulenceRange = new Vector2(0.5f, 5f);
     [SerializeField] private Vector2 radiusRange = new Vector2(0.2f, 1.5f);
     [SerializeField] private Vector2 innerRadiusRange = new Vector2(0.8f, 1.8f);
+    [SerializeField] private float trebleFloor = 0.25f;
+    [SerializeField] private float trebleExponent = 2f;
 
     [Header("Debug")]
     [SerializeField] private bool enableDebugLogs = false;
@@ -93,6 +97,7 @@ public class AudioReactiveVFX : MonoBehaviour
     private float baseRadius;
     private float baseInnerRadius;
     private AdaptiveOrbRadius adaptiveRadius;
+    private float _smoothedRadius;
 
     // VFX Parameter names
     private const string PARAM_AUDIO_BASS = "AudioBass";
@@ -154,6 +159,7 @@ public class AudioReactiveVFX : MonoBehaviour
         // Initialize base radii
         baseRadius = fallbackRadius;
         baseInnerRadius = fallbackInnerRadius;
+        _smoothedRadius = fallbackRadius;
         
         // Apply fallback values initially
         ApplyFallbackValues();
@@ -464,7 +470,10 @@ public class AudioReactiveVFX : MonoBehaviour
         {
             float mappedBass = Mathf.Lerp(bassRange.x, bassRange.y, smoothBass);
             float mappedMid = Mathf.Lerp(midRange.x, midRange.y, smoothMid);
-            float mappedTreble = Mathf.Lerp(trebleRange.x, trebleRange.y, smoothTreble);
+            float trebleNorm = Mathf.Clamp01(smoothTreble);
+            float trebleAboveFloor = Mathf.Clamp01((trebleNorm - trebleFloor) / Mathf.Max(0.0001f, 1f - trebleFloor));
+            float trebleShaped = Mathf.Pow(trebleAboveFloor, trebleExponent);
+            float mappedTreble = Mathf.Lerp(trebleRange.x, trebleRange.y, trebleShaped);
             
             vfx.SetFloat(PARAM_AUDIO_BASS, mappedBass);
             vfx.SetFloat(PARAM_AUDIO_MID, mappedMid);
@@ -514,20 +523,30 @@ public class AudioReactiveVFX : MonoBehaviour
         {
             // Map smoothBass (0-1) directly to radius range for immediate visual feedback
             float targetOuterRadius = Mathf.Lerp(radiusRange.x, radiusRange.y, smoothBass);
-            
-            // Keep inner radius static for now
-            float targetInnerRadius = baseInnerRadius;
-            
-            // Clamp to safe ranges
-            targetOuterRadius = Mathf.Clamp(targetOuterRadius, radiusRange.x, radiusRange.y);
-            targetInnerRadius = Mathf.Clamp(targetInnerRadius, innerRadiusRange.x, innerRadiusRange.y);
+
+            // Add a smooth beat pulse overlay on top of the bass-driven radius
+            if (enableBeatDetection && beatPulseTimer > 0f && beatRadiusAmount > 0f)
+            {
+                float t = 1f - (beatPulseTimer / beatPulseDuration);
+                float envelope = beatRadiusCurve != null ? beatRadiusCurve.Evaluate(t) : Mathf.SmoothStep(0f, 1f, t);
+                float pulse = envelope * beatRadiusAmount;
+                targetOuterRadius += pulse;
+            }
+
+            // Smooth radius changes over time to avoid abrupt snaps
+            _smoothedRadius = Mathf.Lerp(_smoothedRadius, targetOuterRadius, Time.deltaTime * 10f);
+
+            float clampedOuterRadius = Mathf.Clamp(_smoothedRadius, radiusRange.x, radiusRange.y);
+
+            // Keep inner radius static for now, clamped to safe range
+            float targetInnerRadius = Mathf.Clamp(baseInnerRadius, innerRadiusRange.x, innerRadiusRange.y);
             
             if (enableDebugLogs && Time.frameCount % 30 == 0)
             {
-                Debug.Log($"[Radius] Bass: {smoothBass:F3} -> Outer: {targetOuterRadius:F2}m (Range: {radiusRange.x}-{radiusRange.y})");
+                Debug.Log($"[Radius] Bass: {smoothBass:F3} -> Outer: {clampedOuterRadius:F2}m (Range: {radiusRange.x}-{radiusRange.y})");
             }
             
-            vfx.SetFloat(PARAM_RADIUS, targetOuterRadius);
+            vfx.SetFloat(PARAM_RADIUS, clampedOuterRadius);
             vfx.SetFloat(PARAM_INNER_RADIUS, targetInnerRadius);
         }
     }
@@ -598,4 +617,3 @@ public class AudioReactiveVFX : MonoBehaviour
         colorBrightness = Mathf.Clamp(0.1f, 1f, colorBrightness);
     }
 }
-

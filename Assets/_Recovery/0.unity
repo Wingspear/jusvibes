@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomScanner
   captureController: {fileID: 262520623}
   captureInsights: {fileID: 1871323707}
-  musicGenerator: {fileID: 0}
+  musicGenerator: {fileID: 1796228079}
 --- !u!1 &973951869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,17 +1412,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3363119770545057146, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-    - target: {fileID: 4512044462036445783, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 0ee76522fb87d4b9e80af9ed5c548410, type: 2}
+    - target: {fileID: 1166197210250377690, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: -0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[7].m_Value
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[8].m_Value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[9].m_Value
+      value: 3.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: radiusRange.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: radiusRange.y
+      value: 5.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: innerRadiusRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: innerRadiusRange.y
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: fallbackInnerRadius
+      value: 4.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4789230505339621413, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_Name
       value: '[BuildingBlock] Grabbable-Quark'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1467,54 +1515,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4789230505339621413, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1291078230}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
---- !u!1 &1291078229 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4789230505339621413, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-  m_PrefabInstance: {fileID: 1291078228}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1291078230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291078229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33ad6e67bf20440a48949c4beddd9ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuarkGlowShaderDriver
-  audioReactive: {fileID: 1291078231}
-  targetRenderer: {fileID: 1291078232}
-  glowProperty: _GlowPulse
-  trebleProperty: _TrebleAmount
-  hoverProperty: _Hover
-  glowSmoothing: 10
-  trebleSmoothing: 10
-  hoverSmoothing: 10
-  maxGlowFromBass: 1
-  maxTrebleInfluence: 1
---- !u!114 &1291078231 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-  m_PrefabInstance: {fileID: 1291078228}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bf9bc2daaff403f9735b4283d44efb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioReactiveVFX
---- !u!23 &1291078232 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4512044462036445783, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-  m_PrefabInstance: {fileID: 1291078228}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1296795834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,6 +1755,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 788728089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1796228079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2560555852358818341, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+  m_PrefabInstance: {fileID: 1291078228}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e89d5f2442afe3488818dd4e84e9280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicGenerator
 --- !u!1 &1834683585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502f47ffb53dc72488fd04142348e3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Config
+  userConfig: {fileID: 0}
 --- !u!4 &1834683587
 Transform:
   m_ObjectHideFlags: 0

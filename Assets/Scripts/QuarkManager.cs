@@ -11,12 +11,15 @@ public class QuarkManager : Singleton<QuarkManager>
     [SerializeField] private RoomScanner roomScanner;
     [SerializeField] private Quark quarkPrefab;
     [SerializeField] private Transform quarkSpawnParent; // attach b_l_wrist here
+    [SerializeField] private AudioSource justVibesSource;
     [SerializeField] private IHand _leftHand;        // assign in Inspector
     [SerializeField] private IHand _rightHand;       // assign in Inspector
     [SerializeField] private Transform _scaleTarget; // object to scale
 
     [SerializeField] private List<AudioClip> presetClips;
     
+    [SerializeField] private List<AudioClip> justVibesClips;
+
     [Tooltip("Pinch strength above this counts as 'pinching'.")]
     [Range(0f, 1f)]
     [SerializeField] private float pinchStrengthThreshold = 0.7f;
@@ -108,6 +111,11 @@ public class QuarkManager : Singleton<QuarkManager>
     // Only log when state changes
     if (palmUp != lastPalmUp)
     {
+        if (palmUp)
+        {
+            justVibesSource.clip = justVibesClips[UnityEngine.Random.Range(0, justVibesClips.Count)];
+            justVibesSource.Play();
+        }
         Debug.Log($"[QuarkManager] PalmUp = {palmUp} (dot: {dot:F3})");
         lastPalmUp = palmUp;
     }

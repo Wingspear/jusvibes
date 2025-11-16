@@ -1498,6 +1498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1463930204}
+  - component: {fileID: 1463930205}
   m_Layer: 0
   m_Name: quark spawn
   m_TagString: Untagged
@@ -1520,6 +1521,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 925440818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1463930205
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463930203}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1492716019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,6 +1665,7 @@ MonoBehaviour:
   roomScanner: {fileID: 916156640}
   quarkPrefab: {fileID: 5200072622619804558, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
   quarkSpawnParent: {fileID: 1463930204}
+  justVibesSource: {fileID: 1463930205}
   _scaleTarget: {fileID: 0}
   presetClips:
   - {fileID: 8300000, guid: 241a91fadf9dc28469b74c28edfd7bd7, type: 3}
@@ -1579,6 +1678,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4d5b21b8b02638749a4a79673c8a187a, type: 3}
   - {fileID: 8300000, guid: c908df8df44823a4a9cec1a28f9ca254, type: 3}
   - {fileID: 8300000, guid: 4169a9fb0c5682246ba8b977d347f1dc, type: 3}
+  justVibesClips:
+  - {fileID: 8300000, guid: c485af9a9d405e3429cb2344fc1d3dbe, type: 3}
+  - {fileID: 8300000, guid: 2cbd83c4eac96cc48b6e2a43e7e69b57, type: 3}
+  - {fileID: 8300000, guid: e0df8a7d381131740ba040161987293a, type: 3}
+  - {fileID: 8300000, guid: 533280f3c71c2cf4a86f9f34c74f69bd, type: 3}
+  - {fileID: 8300000, guid: a44a06f6d13d5a24a977bc517c599e15, type: 3}
+  - {fileID: 8300000, guid: 19061b635749dd742aec14a53d7b39f0, type: 3}
+  - {fileID: 8300000, guid: a6e66c0fc9ae99e4bbb193ba878ed85c, type: 3}
   pinchStrengthThreshold: 0.7
   minScale: 0.3
   maxScale: 3

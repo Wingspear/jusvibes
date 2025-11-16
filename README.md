@@ -1,4 +1,4 @@
-# Quark
+# Jusvibes
 Imagine your world with a custom generative soundtrack: cozy vibes in a café, airy ambience in the kitchen, calm pads in the bedroom. This app analyzes your surroundings and generates the right music and visual feedback for the moment. Built with Unity and generative audio models.
 
 # What inspired us
@@ -10,7 +10,7 @@ That idea pushed us to explore a system that combines scene understanding, gener
 
 # What we built
 
-Quark is an XR experience that turns your environment into music. You drop a small particle orb into your room, and the moment it lands Quark performs a lightweight spatial scan. It captures images and picks up the overall vibe of the space. That environmental snapshot is sent to the server, where it’s transformed into a custom piece of music shaped by the room you’re standing in. The particle system then adapts to the music and ambience of the room, blending into your space.
+Jusvibes is an XR experience that turns your environment into music. You drop a small particle orb into your room, and the moment it lands Jusvibes performs a lightweight spatial scan. It captures images and picks up the overall vibe of the space. That environmental snapshot is sent to the server, where it’s transformed into a custom piece of music shaped by the room you’re standing in. The particle system then adapts to the music and ambience of the room, blending into your space.
 
 # How we built it
 

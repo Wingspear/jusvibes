@@ -5,16 +5,11 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[Serializable]
-public class SunoConfig
-{
-    public string apiKey;
-}
-
 public class MusicGenerator : MonoBehaviour
 {
-    [Header("Suno API")]
     private string apiKey = "";
+    
+    [Header("Suno API")] [SerializeField] private SunoConfig sunoConfig;
     [SerializeField] private string callBackUrl = "https://dummy-url.com/callback";
     [SerializeField] private string model = "V5";
 
@@ -43,7 +38,7 @@ public class MusicGenerator : MonoBehaviour
     /// </summary>
     public async Task GenerateMusic(string userPrompt)
     {
-        apiKey = Config.Instance.UserConfig.sunoApiKey;
+        apiKey = sunoConfig.sunoApiKey;
         Debug.Log("Setting api key to " + apiKey);
         await GenerateAndPlayAsync(userPrompt);
     }
@@ -157,8 +152,8 @@ public class MusicGenerator : MonoBehaviour
     {
         var body = new GenerateRequestBody
         {
-            customMode = false,
-            instrumental = false,
+            customMode = true,
+            instrumental = true,
             model = model,
             callBackUrl = callBackUrl,
             prompt = userPrompt
@@ -225,7 +220,7 @@ public class MusicGenerator : MonoBehaviour
                 Debug.Log("Status: " + resp.data.status);
 
                 // Better to wait for FIRST_SUCCESS (audio ready)
-                if (resp.data.status == "FIRST_SUCCESS" || resp.data.status == "SUCCESS")
+                if (resp.data.status == "FIRST_SUCCESS" || resp.data.status == "TEXT_SUCCESS")
                 {
                     string streamUrl = resp.data.response.sunoData[0].streamAudioUrl;
                     Debug.Log("🎵 STREAM URL READY: " + streamUrl);

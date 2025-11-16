@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dd75b5a8cd55ca469552fe192ceaf33, type: 3}
-  m_Name: UserConfig
+  m_Name: SunoConfig
   m_EditorClassIdentifier: Assembly-CSharp::UserConfig
-  openaiApiKey: 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
-  sunoApiKey: 76b84f0c57e7a5cd60911b1dbeb86605
+  sunoApiKey: 

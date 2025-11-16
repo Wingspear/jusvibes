@@ -25,7 +25,7 @@ public class CaptureInsightProcessor : MonoBehaviour
                 Role.User,
                 new IResponseContent[]
                 {
-                    new OpenAI.Responses.TextContent("Analyze this room visually and describe its atmosphere in a way that can be used as a prompt for ambient music generation. Focus on the mood, lighting, textures, and the emotional character of the space. Produce a concise, vivid music prompt that fits the room’s aesthetic.\n"),
+                    new OpenAI.Responses.TextContent("Analyze the space’s mood, lighting, textures, and season to guess what activity the user might be doing. Use this to create an instrumental ambient music prompt. Describe the atmosphere vividly, then suggest a flexible genre, instruments, and any subtle nature sounds or special effects. Keep the generated text concise (under 499 characters) and ensure it’s dynamic, immersive, and fitting to the space’s vibe."),
                     new OpenAI.Responses.ImageContent(fileId: file.Id),
                 }
             )

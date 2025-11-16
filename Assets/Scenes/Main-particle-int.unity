@@ -1412,185 +1412,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 891788679228456578, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_Resource
+    - target: {fileID: 3363119770545057146, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 8300000, guid: 98095db0cf1cb419e880f0eb32a3d802, type: 3}
-    - target: {fileID: 891788679228456578, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 891788679228456578, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: OutputAudioMixerGroup
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4512044462036445783, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 24300002, guid: 89cec87b8c5894e5c9a27d998854147d, type: 2}
-    - target: {fileID: 891788679228456578, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1166197210250377690, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209463046377728903, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_InitialEventNameOverriden
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Int.m_Array.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Int.m_Array.Array.data[1].m_Name
-      value: QuarkState
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
-      value: -0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[10].m_Name
-      value: ParticleSize
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[11].m_Name
-      value: VortexStrength
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[12].m_Name
-      value: Radius
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[13].m_Name
-      value: SpawnRate
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[14].m_Name
-      value: GlowPulse
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[7].m_Value
-      value: 1.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[8].m_Value
-      value: -0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[9].m_Value
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[10].m_Value
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[11].m_Value
-      value: 1.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[12].m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[13].m_Value
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Int.m_Array.Array.data[1].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[10].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[11].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[12].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[13].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[14].m_Overridden
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: bassBoost
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1291078230}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: smoothSpeed
-      value: 3.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: trebleBoost
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: radiusRange.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: radiusRange.y
-      value: 5.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: turbulenceRange.x
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: turbulenceRange.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: innerRadiusRange.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: innerRadiusRange.y
-      value: 4.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: fallbackInnerRadius
-      value: 4.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345416061253253278, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1291078230}
+      objectReference: {fileID: 2100000, guid: 0ee76522fb87d4b9e80af9ed5c548410, type: 2}
     - target: {fileID: 4789230505339621413, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_Name
       value: '[BuildingBlock] Grabbable-Quark'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5812852846234348376, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1636,24 +1468,51 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7328044463678291085, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4789230505339621413, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1343851883}
+      addedObject: {fileID: 1291078230}
   m_SourcePrefab: {fileID: 100100000, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
---- !u!114 &1291078229 stripped
+--- !u!1 &1291078229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4789230505339621413, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+  m_PrefabInstance: {fileID: 1291078228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1291078230
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5200072622619804558, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291078229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ad6e67bf20440a48949c4beddd9ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuarkGlowShaderDriver
+  audioReactive: {fileID: 1291078231}
+  targetRenderer: {fileID: 1291078232}
+  glowProperty: _GlowPulse
+  trebleProperty: _TrebleAmount
+  hoverProperty: _Hover
+  glowSmoothing: 10
+  trebleSmoothing: 10
+  hoverSmoothing: 10
+  maxGlowFromBass: 1
+  maxTrebleInfluence: 1
+--- !u!114 &1291078231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3833675101143802462, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
   m_PrefabInstance: {fileID: 1291078228}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395c3347abd80114eaa9a87027c25139, type: 3}
+  m_Script: {fileID: 11500000, guid: e4bf9bc2daaff403f9735b4283d44efb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Quark
---- !u!82 &1291078230 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 891788679228456578, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::AudioReactiveVFX
+--- !u!23 &1291078232 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4512044462036445783, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
   m_PrefabInstance: {fileID: 1291078228}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1296795834
@@ -1863,31 +1722,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1238788345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1343851877 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7328044463678291085, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-  m_PrefabInstance: {fileID: 1291078228}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &1343851882 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-  m_PrefabInstance: {fileID: 1291078228}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1343851883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343851877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0c38ad6e69d49999b7189f2a440840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuarkVFXStateBinder
-  quark: {fileID: 1291078229}
-  vfx: {fileID: 1343851882}
-  quarkStatePropertyName: QuarkState
 --- !u!1 &1432890085
 GameObject:
   m_ObjectHideFlags: 0

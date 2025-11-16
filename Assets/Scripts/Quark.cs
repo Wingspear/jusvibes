@@ -20,6 +20,9 @@ public class Quark : MonoBehaviour
     
     [SerializeField] private AudioSource quarkAudio;
     [SerializeField] private VisualEffect visualEffect;
+    [SerializeField] private AudioSource pickupAudio;
+    [SerializeField] private AudioSource dropAudio;
+
     private void Start()
     {
         GetComponent<Grabbable>().WhenPointerEventRaised += OnPointerEvent;
@@ -60,6 +63,7 @@ public class Quark : MonoBehaviour
     }
     private void OnGrabBegin(PointerEvent evt)
     {
+        pickupAudio.Play();
         if (!hasMusic)
         {
             QuarkManager.Instance.OnQuarkGrabbed(this, !HasMusic);
@@ -70,6 +74,7 @@ public class Quark : MonoBehaviour
 
     private async void OnGrabEnd(PointerEvent evt)
     {
+        dropAudio.Play();
         Vector3 pos = transform.position;
         Quaternion rot = transform.rotation;
         transform.SetParent(null);

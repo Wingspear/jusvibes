@@ -101,11 +101,11 @@ public class QuarkManager : Singleton<QuarkManager>
     // Compare wrist up with global up
     float dot = Vector3.Dot(palmNormal.normalized, Vector3.up);
     bool palmUp = dot > palmUpThreshold;
-    Debug.Log($"[QuarkManager] PalmUp = {palmUp} (dot: {dot:F3})");
 
     // Only log when state changes
     if (palmUp != lastPalmUp)
     {
+        Debug.Log($"[QuarkManager] PalmUp = {palmUp} (dot: {dot:F3})");
         lastPalmUp = palmUp;
     }
 

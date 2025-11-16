@@ -20,7 +20,6 @@
     "com.unity.xr.interaction.toolkit": "3.2.2",
     "com.unity.xr.management": "4.5.3",
     "com.unity.xr.meta-openxr": "2.3.0",
-    "com.unity.xr.mock-hmd": "1.4.0-preview.2",
     "com.unity.xr.openxr": "1.16.0",
     "com.utilities.buildpipeline": "1.8.1",
     "com.utilities.encoder.ogg": "5.0.1",

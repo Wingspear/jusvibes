@@ -7,13 +7,16 @@ public class QuarkManager : Singleton<QuarkManager>
 {
     [SerializeField] private RoomScanner roomScanner;
     [SerializeField] private Quark quarkPrefab;
-    [SerializeField] private Transform quarkSpawnParent;
-    [SerializeField] private OVRSkeleton leftSkeleton;
-    [SerializeField] private Transform _head; // main camera
+    [SerializeField] private Transform quarkSpawnParent; // "palm" transform
+    [SerializeField] private Transform _head;            // main camera
     
     private Quark spawnedQuark = null;
-
     private bool lastPalmFacingFace = false; // to prevent log spam
+
+    private void Start()
+    {
+        SpawnQuark(Vector3.zero, Quaternion.identity, quarkSpawnParent);
+    }
 
     public void SpawnQuark(Vector3 pos, Quaternion rot, Transform parent)
     {
@@ -50,48 +53,32 @@ public class QuarkManager : Singleton<QuarkManager>
 
     private void Update()
     {
-        if (leftSkeleton == null)
+        if (quarkSpawnParent == null || _head == null)
         {
-            Debug.LogWarning("[QuarkManager] Left skeleton reference missing!");
+            Debug.LogWarning("[QuarkManager] Missing quarkSpawnParent or head reference.");
             return;
         }
 
-        if (!leftSkeleton.IsInitialized)
-        {
-            Debug.LogWarning("[QuarkManager] Left skeleton not initialized yet.");
-            return;
-        }
+        // Treat quarkSpawnParent as the “palm”
+        Vector3 palmPos    = quarkSpawnParent.position;
+        Vector3 palmNormal = quarkSpawnParent.up; // using .up as requested
 
-        // Get the wrist joint (palm reference)
-        var wrist = leftSkeleton.Bones[(int)OVRSkeleton.BoneId.Hand_WristRoot];
-        if (wrist == null)
-        {
-            Debug.LogWarning("[QuarkManager] Wrist bone is NULL — cannot compute palm direction!");
-            return;
-        }
+        // Direction from head to this “palm”
+        Vector3 headToPalm = (palmPos - _head.position).normalized;
 
-        Pose palmPose = new Pose(wrist.Transform.position, wrist.Transform.rotation);
+        // Debug lines in scene view
+        Debug.DrawLine(palmPos, palmPos + palmNormal * 0.1f, Color.blue);     // palm normal
+        Debug.DrawLine(_head.position, palmPos, Color.green);                 // head -> palm
 
-        // Debug positions
-        Debug.DrawLine(palmPose.position, palmPose.position + palmPose.rotation * Vector3.forward * 0.1f, Color.blue);
-        Debug.DrawLine(_head.position, palmPose.position, Color.green);
-
-        // Compute palm-to-face dot product
-        Vector3 palmNormal = palmPose.rotation * Vector3.forward;
-        Vector3 headToPalm = (palmPose.position - _head.position).normalized;
         float dot = Vector3.Dot(palmNormal, headToPalm);
+        bool palmFacingFace = dot > 0.65f; // tweak threshold as needed
 
-        bool palmFacingFace = dot > 0.65f;
-
-        // Only log transitions to avoid spam
+        // Only log when the state changes
         if (palmFacingFace != lastPalmFacingFace)
         {
-            Debug.Log($"[QuarkManager] PalmFacingFace changed → {palmFacingFace}  (dot: {dot:F3})");
             lastPalmFacingFace = palmFacingFace;
+            Debug.Log($"[QuarkManager] PalmFacingFace changed → {palmFacingFace} (dot: {dot:F3})");
         }
-
-        // Optional: continuous debug value
-        // Debug.Log($"[QuarkManager] dot={dot:F3}");
 
         if (spawnedQuark != null)
         {

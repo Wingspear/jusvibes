@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Quark
   state: 0
   quarkAudio: {fileID: 891788679228456578}
+  visualEffect: {fileID: 3745694674385093892}
 --- !u!1 &8509525156034331144
 GameObject:
   m_ObjectHideFlags: 0

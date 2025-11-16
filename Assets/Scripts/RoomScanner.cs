@@ -11,7 +11,7 @@ public class RoomScanner : MonoBehaviour
     [SerializeField] private MusicGenerator musicGenerator;
     
     [Button(30)]
-    public async Task ScanAndPlayMusic(AudioSource audioSource)
+    public async Task ScanAndPlayMusic(Quark quark)
     {
         Debug.Log("Capturing photo...");
         await captureController.CapturePhoto();
@@ -21,7 +21,8 @@ public class RoomScanner : MonoBehaviour
         VisualInsights visualInsights = await captureInsights.FetchCaptureVisualInsights(numCaptures);
         Debug.Log("Primary: " + visualInsights.primaryColor);
         Debug.Log("Secondary: " + visualInsights.secondaryColor);
+        quark.InjectColors(visualInsights.primaryColor, visualInsights.secondaryColor);
         Debug.Log("Generating music");
-        await musicGenerator.GenerateMusic(audioSource, musicPrompt);
+        await musicGenerator.GenerateMusic(quark.Audio, musicPrompt);
     }
 }

@@ -64,7 +64,7 @@ public class QuarkManager : Singleton<QuarkManager>
     public async Task GenerateMusicForQuark(Quark quark)
     {
         Debug.Log("[QuarkManager] Generating music for Quark...");
-        await roomScanner.ScanAndPlayMusic(quark.Audio);
+        await roomScanner.ScanAndPlayMusic(quark);
     }
 
     public void OnQuarkGrabbed(Quark quark, bool isFirstGrab)

@@ -13,16 +13,19 @@ public class AdaptiveOrbRadius : MonoBehaviour
 
     [Header("Space Detection")]
     [SerializeField] private LayerMask obstacleMask = -1; // Everything by default
-    [SerializeField] private float maxRadius = 0.6f;
-    [SerializeField] private float minRadius = 0.15f;
-    [SerializeField] private float padding = 0.1f;
+    [SerializeField] private float maxRadius = 1.5f;
+    [SerializeField] private float minRadius = 0.3f;
+    [SerializeField] private float padding = 0.05f;
+    [SerializeField] private bool ignoreSelfColliders = true;
 
     [Header("Animation")]
     [SerializeField] private float adjustSpeed = 5f;
-    [SerializeField] private float updateInterval = 0.5f; // Continuous updates every 0.5s
+    [SerializeField] private bool enableContinuousUpdates = true;
+    [SerializeField] private float updateInterval = 2.0f; // Continuous updates interval
 
     [Header("Debug")]
     [SerializeField] private bool showDebugGizmos = true;
+    [SerializeField] private bool enableDebugLogs = true;
 
     private float currentRadius;
     private float targetRadius;
@@ -53,8 +56,8 @@ public class AdaptiveOrbRadius : MonoBehaviour
 
     private void Update()
     {
-        // Check if it's time to recalculate
-        if (Time.time - lastUpdateTime >= updateInterval)
+        // Check if it's time to recalculate (only if continuous updates enabled)
+        if (enableContinuousUpdates && Time.time - lastUpdateTime >= updateInterval)
         {
             RecalculateRadius();
             lastUpdateTime = Time.time;
@@ -84,32 +87,86 @@ public class AdaptiveOrbRadius : MonoBehaviour
 
     /// <summary>
     /// Computes the largest safe radius that doesn't intersect obstacles.
-    /// Uses Physics.OverlapSphere to test progressively smaller radii.
+    /// Uses binary search with Physics.OverlapSphere for efficient detection.
     /// </summary>
     /// <param name="position">Center position to test from</param>
     /// <returns>The largest safe radius, clamped between minRadius and maxRadius</returns>
     private float ComputeAvailableRadius(Vector3 position)
     {
-        float testRadius = maxRadius;
-        float step = 0.05f; // 5cm steps for reasonable precision
-
-        // Test from max down to min, finding first radius that fits
-        while (testRadius >= minRadius)
+        // Quick check: if max radius fits, return immediately (best case: 1 check)
+        if (HasClearance(position, maxRadius - padding))
         {
-            // Check if a sphere of this radius (minus padding) would overlap any obstacles
-            Collider[] overlaps = Physics.OverlapSphere(position, testRadius - padding, obstacleMask);
+            if (enableDebugLogs)
+                Debug.Log($"[AdaptiveOrb] Max radius {maxRadius}m fits! Using max.");
+            return maxRadius;
+        }
+        
+        // Quick check: if min radius doesn't fit, return min (2 checks total)
+        if (!HasClearance(position, minRadius - padding))
+        {
+            if (enableDebugLogs)
+                Debug.LogWarning($"[AdaptiveOrb] Even min radius {minRadius}m has obstacles. Using min anyway.");
+            return minRadius;
+        }
+        
+        // Binary search for largest radius that fits (typically 6-8 checks)
+        float low = minRadius;
+        float high = maxRadius;
+        float bestRadius = minRadius;
+        int maxIterations = 8; // Limits to ~8 checks for good precision
+        
+        for (int i = 0; i < maxIterations; i++)
+        {
+            float mid = (low + high) / 2f;
             
-            if (overlaps.Length == 0)
+            if (HasClearance(position, mid - padding))
             {
-                // Found a radius that fits!
-                return Mathf.Clamp(testRadius, minRadius, maxRadius);
+                // This radius fits, try larger
+                bestRadius = mid;
+                low = mid;
+            }
+            else
+            {
+                // Collision detected, try smaller
+                high = mid;
             }
             
-            testRadius -= step;
+            // Stop if range is small enough (within 5cm precision)
+            if (high - low < 0.05f)
+                break;
         }
-
-        // Fallback to minimum radius if nothing fits
-        return minRadius;
+        
+        if (enableDebugLogs)
+            Debug.Log($"[AdaptiveOrb] Found safe radius: {bestRadius:F2}m (range: {minRadius}-{maxRadius}m)");
+        
+        return bestRadius;
+    }
+    
+    /// <summary>
+    /// Checks if a sphere at the given position and radius has clearance from obstacles.
+    /// </summary>
+    private bool HasClearance(Vector3 position, float radius)
+    {
+        Collider[] overlaps = Physics.OverlapSphere(position, radius, obstacleMask);
+        
+        // Filter out self colliders if enabled
+        if (ignoreSelfColliders && overlaps.Length > 0)
+        {
+            foreach (var collider in overlaps)
+            {
+                // If this collider is not part of our GameObject hierarchy, it's an obstacle
+                if (!collider.transform.IsChildOf(transform) && collider.transform != transform)
+                {
+                    if (enableDebugLogs)
+                        Debug.Log($"[AdaptiveOrb] Obstacle detected at radius {radius:F2}m: {collider.gameObject.name}");
+                    return false;
+                }
+            }
+            // All colliders were self colliders, so we have clearance
+            return true;
+        }
+        
+        return overlaps.Length == 0;
     }
 
     /// <summary>

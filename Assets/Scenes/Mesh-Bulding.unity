@@ -2197,12 +2197,15 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 55
-  maxRadius: 4
-  minRadius: 0.01
+  maxRadius: 5
+  minRadius: 1.5
   padding: 0.06
+  ignoreSelfColliders: 1
   adjustSpeed: 5
+  enableContinuousUpdates: 1
   updateInterval: 0.5
   showDebugGizmos: 1
+  enableDebugLogs: 1
 --- !u!1 &1669649663
 GameObject:
   m_ObjectHideFlags: 0

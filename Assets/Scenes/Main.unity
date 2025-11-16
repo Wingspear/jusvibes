@@ -1418,12 +1418,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 423855335924414240, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423855335924414240, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: maxRadius
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 423855335924414240, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: minRadius
-      value: 2.74
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 423855335924414240, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: ignoreSelfColliders
@@ -1431,7 +1435,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
-      value: 7
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Int.m_Array.Array.data[0].m_Value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Name
@@ -1446,6 +1454,42 @@ PrefabInstance:
       value: AudioBass
       objectReference: {fileID: 0}
     - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[7].m_Name
+      value: CurlIntensity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 6.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
+      value: 4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Value
+      value: 5.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Value
+      value: 0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[5].m_Value
+      value: 1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[6].m_Value
+      value: 2.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[7].m_Value
+      value: 4.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Overridden
       value: 1
       objectReference: {fileID: 0}
@@ -1455,6 +1499,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[6].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[7].m_Overridden
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}

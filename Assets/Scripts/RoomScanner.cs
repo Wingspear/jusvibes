@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class RoomScanner : MonoBehaviour
     [SerializeField] private MusicGenerator musicGenerator;
     
     [Button(30)]
-    public async void Scan()
+    public async Task ScanAndPlayMusic(AudioSource audioSource)
     {
         Debug.Log("Capturing photo...");
         await captureController.CapturePhoto();
@@ -21,17 +22,6 @@ public class RoomScanner : MonoBehaviour
         Debug.Log("Primary: " + visualInsights.primaryColor);
         Debug.Log("Secondary: " + visualInsights.secondaryColor);
         Debug.Log("Generating music");
-        await musicGenerator.GenerateMusic(musicPrompt);
-    }
-
-    private void Start()
-    {
-        StartCoroutine(StartScan());
-    }
-
-    private IEnumerator StartScan()
-    {
-        yield return new WaitForSeconds(5f);
-        Scan();
+        await musicGenerator.GenerateMusic(audioSource, musicPrompt);
     }
 }

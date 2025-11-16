@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: aa0612b9-0241-4a06-a7ac-e26517012816
+  instanceId: f4d2dd93-fd33-4dfd-b770-282f807f8019
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 363806779628730416}
   - component: {fileID: 7238119870141962407}
   - component: {fileID: 6119583141843826020}
+  - component: {fileID: 5200072622619804558}
   m_Layer: 0
   m_Name: '[BuildingBlock] Grabbable-Quark'
   m_TagString: Untagged
@@ -155,7 +156,7 @@ Transform:
   m_Children:
   - {fileID: 2602114457042086525}
   - {fileID: 1166197210250377690}
-  - {fileID: 5512184906783974400}
+  - {fileID: 3705033166971841364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6014060989442040936
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 7358e191-33b7-43ca-b066-b2f00531ac66
-  instanceId: 95de59eb-3920-45eb-8426-2784a2ec69c4
+  instanceId: bf813e3a-3d1e-4e9b-9e3f-6942cafa2225
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -302,7 +303,21 @@ MonoBehaviour:
   _rigidbody: {fileID: 7238119870141962407}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
---- !u!1 &9125009775293629491
+--- !u!114 &5200072622619804558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789230505339621413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395c3347abd80114eaa9a87027c25139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Quark
+  state: 0
+  quarkAudio: {fileID: 891788679228456578}
+--- !u!1 &8509525156034331144
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,70 +325,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5512184906783974400}
-  - component: {fileID: 2560555852358818341}
-  - component: {fileID: 186999099924856327}
+  - component: {fileID: 3705033166971841364}
+  - component: {fileID: 891788679228456578}
+  - component: {fileID: 2209463046377728903}
   m_Layer: 0
-  m_Name: Music Player
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5512184906783974400
+--- !u!4 &3705033166971841364
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9125009775293629491}
+  m_GameObject: {fileID: 8509525156034331144}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5812852846234348376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2560555852358818341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9125009775293629491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e89d5f2442afe3488818dd4e84e9280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicGenerator
-  callBackUrl: https://dummy-url.com/callback
-  model: V5
-  audioSource: {fileID: 0}
-  prompt: 
---- !u!82 &186999099924856327
+--- !u!82 &891788679228456578
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9125009775293629491}
+  m_GameObject: {fileID: 8509525156034331144}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 89cec87b8c5894e5c9a27d998854147d, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 98095db0cf1cb419e880f0eb32a3d802, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 6
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -448,6 +447,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2209463046377728903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509525156034331144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07f270ac36c49789466c75ceb88424c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAudioSource
+  enableSpatialization: 1
+  gainBoostDb: 0
+  enableAcoustics: 1
+  reverbSendDb: 0
 --- !u!1001 &3320377471835357876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -629,10 +644,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765432109876543210, guid: a3197a4debbc4452facd6b47ee443208, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 186999099924856327}
-    - target: {fileID: 8765432109876543210, guid: a3197a4debbc4452facd6b47ee443208, type: 3}
       propertyPath: bassRange.y
       value: 10
       objectReference: {fileID: 0}
@@ -640,10 +651,6 @@ PrefabInstance:
       propertyPath: trebleRange.y
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 8765432109876543210, guid: a3197a4debbc4452facd6b47ee443208, type: 3}
-      propertyPath: musicGenerator
-      value: 
-      objectReference: {fileID: 2560555852358818341}
     m_RemovedComponents:
     - {fileID: 3167595801779729812, guid: a3197a4debbc4452facd6b47ee443208, type: 3}
     m_RemovedGameObjects: []
@@ -683,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425fbab86e39d4339966ad2a465cf617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioSpectrumDriver
-  audioSource: {fileID: 186999099924856327}
+  audioSource: {fileID: 0}
   vfx: {fileID: 3745694674385093892}
   fftSize: 1024
   smooth: 10
@@ -699,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bf9bc2daaff403f9735b4283d44efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioReactiveVFX
-  audioSource: {fileID: 186999099924856327}
+  audioSource: {fileID: 0}
   vfx: {fileID: 3745694674385093892}
   musicGenerator: {fileID: 0}
   fftSize: 512

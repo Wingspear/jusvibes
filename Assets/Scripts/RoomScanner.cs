@@ -14,8 +14,12 @@ public class RoomScanner : MonoBehaviour
     {
         Debug.Log("Capturing photo...");
         await captureController.CapturePhoto();
+        int numCaptures = 1;
         Debug.Log("Gathering capture insights...");
-        string musicPrompt = await captureInsights.FetchCaptureMusicInsights();
+        string musicPrompt = await captureInsights.FetchCaptureMusicInsights(numCaptures);
+        VisualInsights visualInsights = await captureInsights.FetchCaptureVisualInsights(numCaptures);
+        Debug.Log("Primary: " + visualInsights.primaryColor);
+        Debug.Log("Secondary: " + visualInsights.secondaryColor);
         Debug.Log("Generating music");
         await musicGenerator.GenerateMusic(musicPrompt);
     }

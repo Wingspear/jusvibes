@@ -105,7 +105,6 @@ public class AudioReactiveVFX : MonoBehaviour
     private const string PARAM_AUDIO_TREBLE = "AudioTreble";
     private const string PARAM_PRIMARY_COLOR = "PrimaryColor";
     private const string PARAM_SECONDARY_COLOR = "SecondaryColor";
-    private const string PARAM_ACCENT_COLOR = "AccentColor";
     private const string PARAM_ENERGY = "Energy";
     private const string PARAM_TURBULENCE = "TurbulenceIntensity";
     private const string PARAM_RADIUS = "ParticleBoundary 1_radius";
@@ -485,7 +484,6 @@ public class AudioReactiveVFX : MonoBehaviour
         {
             vfx.SetVector4(PARAM_PRIMARY_COLOR, currentPrimary);
             vfx.SetVector4(PARAM_SECONDARY_COLOR, currentSecondary);
-            vfx.SetVector4(PARAM_ACCENT_COLOR, currentAccent);
         }
 
         // Modulate energy

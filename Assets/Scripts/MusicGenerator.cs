@@ -5,21 +5,13 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[Serializable]
-public class SunoConfig
-{
-    public string apiKey;
-}
-
 public class MusicGenerator : MonoBehaviour
 {
-    [Header("Suno API")]
     private string apiKey = "";
+    
+    [Header("Suno API")] [SerializeField] private SunoConfig sunoConfig;
     [SerializeField] private string callBackUrl = "https://dummy-url.com/callback";
     [SerializeField] private string model = "V5";
-
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
 
     [TextArea]
     public string prompt = "";
@@ -30,9 +22,9 @@ public class MusicGenerator : MonoBehaviour
     // ---------- Odin button entry (for inspector testing) ----------
 
     [Button(30)]
-    public async void TestGenerate()
+    public async void TestGenerate(AudioSource audioSource, string prompt)
     {
-        await GenerateMusic(prompt);
+        await GenerateMusic(audioSource, prompt);
     }
 
     // ---------- Public async API ----------
@@ -41,11 +33,11 @@ public class MusicGenerator : MonoBehaviour
     /// Full pipeline: load config → call Suno → poll → download → play.
     /// This Task completes only when audio is playing (or if something fails).
     /// </summary>
-    public async Task GenerateMusic(string userPrompt)
+    public async Task GenerateMusic(AudioSource audioSource, string userPrompt)
     {
-        apiKey = Config.Instance.UserConfig.sunoApiKey;
+        apiKey = sunoConfig.sunoApiKey;
         Debug.Log("Setting api key to " + apiKey);
-        await GenerateAndPlayAsync(userPrompt);
+        await GenerateAndPlayAsync(audioSource, userPrompt);
     }
 
     // ---------- DTOs ----------
@@ -113,25 +105,10 @@ public class MusicGenerator : MonoBehaviour
         public string msg;
         public RecordInfoData data;
     }
-
-    // ---------- Lifecycle ----------
-
-    private void Awake()
-    {
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
-
-        if (audioSource == null)
-        {
-            Debug.LogWarning("MusicGenerator: No AudioSource assigned or found on this GameObject.");
-        }
-    }
-
+    
     // ---------- Async pipeline ----------
 
-    private async Task GenerateAndPlayAsync(string userPrompt)
+    private async Task GenerateAndPlayAsync(AudioSource audioSource, string userPrompt)
     {
         // 1. POST /generate
         string taskId = await CallGenerateEndpointAsync(userPrompt);
@@ -150,15 +127,15 @@ public class MusicGenerator : MonoBehaviour
         }
 
         // 3. Download & play
-        await DownloadAndPlayAsync(streamUrl);
+        await DownloadAndPlayAsync(audioSource, streamUrl);
     }
 
     private async Task<string> CallGenerateEndpointAsync(string userPrompt)
     {
         var body = new GenerateRequestBody
         {
-            customMode = false,
-            instrumental = false,
+            customMode = true,
+            instrumental = true,
             model = model,
             callBackUrl = callBackUrl,
             prompt = userPrompt
@@ -225,7 +202,7 @@ public class MusicGenerator : MonoBehaviour
                 Debug.Log("Status: " + resp.data.status);
 
                 // Better to wait for FIRST_SUCCESS (audio ready)
-                if (resp.data.status == "FIRST_SUCCESS" || resp.data.status == "SUCCESS")
+                if (resp.data.status == "FIRST_SUCCESS" || resp.data.status == "TEXT_SUCCESS")
                 {
                     string streamUrl = resp.data.response.sunoData[0].streamAudioUrl;
                     Debug.Log("🎵 STREAM URL READY: " + streamUrl);
@@ -238,7 +215,7 @@ public class MusicGenerator : MonoBehaviour
         }
     }
 
-    private async Task DownloadAndPlayAsync(string url)
+    private async Task DownloadAndPlayAsync(AudioSource audioSource, string url)
     {
         if (audioSource == null)
         {

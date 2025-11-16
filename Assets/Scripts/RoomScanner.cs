@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -18,9 +20,14 @@ public class RoomScanner : MonoBehaviour
         await musicGenerator.GenerateMusic(musicPrompt);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        StartCoroutine(StartScan());
+    }
+
+    private IEnumerator StartScan()
+    {
+        yield return new WaitForSeconds(5f);
+        Scan();
     }
 }

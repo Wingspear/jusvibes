@@ -1539,6 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa32be6d65e2a8341892f7e467d11aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaptureInsightProcessor
+  openAIConfig: {fileID: 11400000, guid: 2203e42742426964bb329f30b9ac906f, type: 2}
 --- !u!4 &1871323708
 Transform:
   m_ObjectHideFlags: 0

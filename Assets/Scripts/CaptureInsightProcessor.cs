@@ -9,10 +9,11 @@ using UnityEngine;
 
 public class CaptureInsightProcessor : MonoBehaviour
 {
+    [SerializeField] private OpenAIConfiguration openAIConfig;
     [Button(30)]
     public async Task<string> FetchCaptureMusicInsights()
     {
-        var api = new OpenAIClient(new OpenAIAuthentication(Config.Instance.UserConfig.openaiApiKey));
+        var api = new OpenAIClient(new OpenAIAuthentication(openAIConfig), new OpenAISettings(openAIConfig));
         var file = await api.FilesEndpoint.UploadFileAsync(
             Application.persistentDataPath + "/capture.png",
             FilePurpose.Vision

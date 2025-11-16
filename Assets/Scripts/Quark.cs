@@ -63,6 +63,12 @@ public class Quark : MonoBehaviour
 
     private async void OnGrabEnd(PointerEvent evt)
     {
+        Vector3 pos = transform.position;
+        Quaternion rot = transform.rotation;
+        transform.SetParent(null);
+        transform.position = pos;
+        transform.rotation = rot;
+        
         if (!hasMusic)
         {
             hasMusic = true;

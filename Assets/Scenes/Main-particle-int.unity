@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomScanner
   captureController: {fileID: 262520623}
   captureInsights: {fileID: 1871323707}
-  musicGenerator: {fileID: 1796228079}
+  musicGenerator: {fileID: 0}
 --- !u!1 &973951869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,8 +1531,22 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7328044463678291085, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1343851883}
   m_SourcePrefab: {fileID: 100100000, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+--- !u!114 &1291078229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5200072622619804558, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+  m_PrefabInstance: {fileID: 1291078228}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395c3347abd80114eaa9a87027c25139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Quark
 --- !u!1 &1296795834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1754,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1238788345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1343851877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7328044463678291085, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+  m_PrefabInstance: {fileID: 1291078228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &1343851882 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 3745694674385093892, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
+  m_PrefabInstance: {fileID: 1291078228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1343851883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343851877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0c38ad6e69d49999b7189f2a440840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuarkVFXStateBinder
+  quark: {fileID: 1291078229}
+  vfx: {fileID: 1343851882}
+  quarkStatePropertyName: QuarkState
 --- !u!1 &1432890085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,17 +1810,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 788728089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1796228079 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2560555852358818341, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
-  m_PrefabInstance: {fileID: 1291078228}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e89d5f2442afe3488818dd4e84e9280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicGenerator
 --- !u!1 &1834683585
 GameObject:
   m_ObjectHideFlags: 0

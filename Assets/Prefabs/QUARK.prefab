@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4484304954541128558}
   - component: {fileID: 2157005152530139056}
   - component: {fileID: 7132878808400985478}
+  - component: {fileID: 3167595801779729812}
   m_Layer: 0
   m_Name: QUARK
   m_TagString: Untagged
@@ -59,6 +60,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: 49.3
         m_Name: SpatialBlend
+        m_Overridden: 1
+      - m_Value: 5.24
+        m_Name: ParticleBoundary_radius
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -135,3 +139,29 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3167595801779729812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451088563107741241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a739518237a24bba8579991b808f4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AdaptiveOrbRadius
+  vfx: {fileID: 2157005152530139056}
+  radiusPropertyName: ParticleBoundary_radius
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 55
+  maxRadius: 5
+  minRadius: 1.5
+  padding: 0.06
+  ignoreSelfColliders: 1
+  adjustSpeed: 5
+  enableContinuousUpdates: 1
+  updateInterval: 0.5
+  showDebugGizmos: 1
+  enableDebugLogs: 1

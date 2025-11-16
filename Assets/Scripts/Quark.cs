@@ -2,6 +2,7 @@ using System;
 using Oculus.Interaction;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public enum QuarkState
 {
@@ -18,7 +19,7 @@ public class Quark : MonoBehaviour
     private bool isGrabbed = false;
     
     [SerializeField] private AudioSource quarkAudio;
-    
+    [SerializeField] private VisualEffect visualEffect;
     private void Start()
     {
         GetComponent<Grabbable>().WhenPointerEventRaised += OnPointerEvent;
@@ -29,6 +30,12 @@ public class Quark : MonoBehaviour
         GetComponent<Grabbable>().WhenPointerEventRaised -= OnPointerEvent;
     }
 
+    public void InjectColors(Color primary, Color secondary)
+    {
+        visualEffect.SetVector4("PrimaryColor", primary);
+        visualEffect.SetVector4("SecondaryColor", secondary);
+    }
+    
     private void OnPointerEvent(PointerEvent evt)
     {
         switch (evt.Type)
@@ -85,5 +92,6 @@ public class Quark : MonoBehaviour
     public void SetState(QuarkState inputState)
     {
         state = inputState;
+        visualEffect.SetInt("QuarkState", (int)state);
     }
 }

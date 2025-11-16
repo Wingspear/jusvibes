@@ -62,7 +62,7 @@ public class CaptureInsightProcessor : MonoBehaviour
 
         var request = new CreateResponseRequest(
             input: input,
-            model: "gpt-4.1-mini"
+            model: "gpt-5.1"
         );
 
         var response = await api.ResponsesEndpoint.CreateModelResponseAsync(request);
@@ -326,5 +326,4 @@ public class CaptureInsightProcessor : MonoBehaviour
         h = (h + 0.5f) % 1.0f; // rotate hue 180°
         return Color.HSVToRGB(h, s, v);
     }
-
 }

@@ -61,11 +61,11 @@ public class CaptureController : MonoBehaviour
     [Button(30)]
     public async void CapturePhotoTest()
     {
-        await camAccess.SaveCurrentCameraImageAsync(Application.persistentDataPath + "/capture.png");
+        await camAccess.SaveCurrentCameraImageAsync(Application.persistentDataPath + "/capture0.png");
     }
 
     public async Task CapturePhoto()
     {
-        await camAccess.SaveCurrentCameraImageAsync(Application.persistentDataPath + "/capture.png");
+        await camAccess.SaveCurrentCameraImageAsync(Application.persistentDataPath + "/capture0.png");
     }
 }

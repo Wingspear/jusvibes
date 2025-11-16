@@ -1567,6 +1567,21 @@ MonoBehaviour:
   roomScanner: {fileID: 916156640}
   quarkPrefab: {fileID: 5200072622619804558, guid: 81a840713070b43d4b4c67008ae1ff51, type: 3}
   quarkSpawnParent: {fileID: 1463930204}
+  _scaleTarget: {fileID: 0}
+  presetClips:
+  - {fileID: 8300000, guid: 241a91fadf9dc28469b74c28edfd7bd7, type: 3}
+  - {fileID: 8300000, guid: 72ef469b10ea4e04ca0a128ad9551fb9, type: 3}
+  - {fileID: 8300000, guid: b4d3d2a36bd30d6418a4b029286775f5, type: 3}
+  - {fileID: 8300000, guid: 2721ae08167927e45b7b7f1837b2cd69, type: 3}
+  - {fileID: 8300000, guid: dee353df6a9303b4195a40806a7b34d7, type: 3}
+  - {fileID: 8300000, guid: d2e4fb5de5cb284479abdbe34eb0e32e, type: 3}
+  - {fileID: 8300000, guid: f87d0294a15b9464ea18f4c9624c478d, type: 3}
+  - {fileID: 8300000, guid: 4d5b21b8b02638749a4a79673c8a187a, type: 3}
+  - {fileID: 8300000, guid: c908df8df44823a4a9cec1a28f9ca254, type: 3}
+  - {fileID: 8300000, guid: 4169a9fb0c5682246ba8b977d347f1dc, type: 3}
+  pinchStrengthThreshold: 0.7
+  minScale: 0.3
+  maxScale: 3
   palmUpThreshold: 0.65
 --- !u!1 &1731251377
 GameObject:
@@ -1774,8 +1789,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1796228080}
   - component: {fileID: 1796228079}
-  - component: {fileID: 1796228078}
-  - component: {fileID: 1796228081}
   m_Layer: 0
   m_Name: Music Player
   m_TagString: Untagged
@@ -1783,103 +1796,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1796228078
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796228077}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 4
-  MaxDistance: 5
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1796228079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1911,22 +1827,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 916156639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1796228081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796228077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07f270ac36c49789466c75ceb88424c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Meta.XR.Audio::MetaXRAudioSource
-  enableSpatialization: 1
-  gainBoostDb: 0
-  enableAcoustics: 1
-  reverbSendDb: 0
 --- !u!1 &1871323706
 GameObject:
   m_ObjectHideFlags: 0

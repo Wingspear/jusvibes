@@ -15,6 +15,8 @@ public class QuarkManager : Singleton<QuarkManager>
     [SerializeField] private IHand _rightHand;       // assign in Inspector
     [SerializeField] private Transform _scaleTarget; // object to scale
 
+    [SerializeField] private List<AudioClip> presetClips;
+    
     [Tooltip("Pinch strength above this counts as 'pinching'.")]
     [Range(0f, 1f)]
     [SerializeField] private float pinchStrengthThreshold = 0.7f;
@@ -56,6 +58,7 @@ public class QuarkManager : Singleton<QuarkManager>
         spawnedQuark.transform.localPosition = Vector3.zero;
         spawnedQuark.transform.localRotation = Quaternion.identity;
         spawnedQuark.gameObject.SetActive(false);
+        spawnedQuark.Audio.clip = presetClips[UnityEngine.Random.Range(0, presetClips.Count)];
         allQuarks.Add(spawnedQuark);
         
         Debug.Log("[QuarkManager] Spawned new Quark.");

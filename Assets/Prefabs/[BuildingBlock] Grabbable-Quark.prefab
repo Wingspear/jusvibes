@@ -799,7 +799,7 @@ PrefabInstance:
     - target: {fileID: 2157005152530139056, guid: a3197a4debbc4452facd6b47ee443208, type: 3}
       propertyPath: m_Asset
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8926484042661614526, guid: a96d94ba719654425be88818906b6723, type: 3}
     - target: {fileID: 2157005152530139056, guid: a3197a4debbc4452facd6b47ee443208, type: 3}
       propertyPath: m_PropertySheet.m_Int.m_Array.Array.size
       value: 2

@@ -15,7 +15,6 @@ public class QuarkGlowShaderDriver : MonoBehaviour
     [Header("Shader Property Names")]
     [SerializeField] private string primaryColorProperty = "PrimaryColor";
     [SerializeField] private string secondaryColorProperty = "SecondaryColor";
-    [SerializeField] private string accentColorProperty = "AccentColor";
     [SerializeField] private string glowProperty = "_GlowPulse";
     [SerializeField] private string trebleProperty = "_TrebleAmount";
     [SerializeField] private string hoverProperty = "_Hover";
@@ -72,12 +71,6 @@ public class QuarkGlowShaderDriver : MonoBehaviour
             {
                 var c = (Color)vfx.GetVector4(vfxSecondaryColorProperty);
                 mat.SetColor(secondaryColorProperty, c);
-            }
-
-            if (!string.IsNullOrEmpty(vfxAccentColorProperty) && !string.IsNullOrEmpty(accentColorProperty))
-            {
-                var c = (Color)vfx.GetVector4(vfxAccentColorProperty);
-                mat.SetColor(accentColorProperty, c);
             }
         }
 

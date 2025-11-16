@@ -62,7 +62,7 @@ public class CaptureInsightProcessor : MonoBehaviour
 
         var request = new CreateResponseRequest(
             input: input,
-            model: "gpt-5.1"
+            model: "gpt-4.1-mini"
         );
 
         var response = await api.ResponsesEndpoint.CreateModelResponseAsync(request);
